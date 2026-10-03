@@ -1,0 +1,552 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>❤️ Do u love Me?</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                135deg,
+                #fff5f7,
+                #ffe1eb
+            );
+
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .heart {
+            font-size: 95px;
+            animation: heartbeat 1.1s infinite;
+        }
+
+        h1 {
+            margin: 10px 0 45px;
+
+            font-size: clamp(45px, 8vw, 80px);
+
+            color: #111;
+
+            font-family: cursive;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        button {
+            border: none;
+            border-radius: 15px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        /* YES */
+
+        #yes {
+            width: 280px;
+            height: 105px;
+
+            font-size: 40px;
+
+            color: white;
+
+            background: linear-gradient(
+                135deg,
+                #ff1744,
+                #ff315b
+            );
+
+            box-shadow:
+                0 10px 25px
+                rgba(255, 23, 68, 0.28);
+
+            cursor: pointer;
+        }
+
+        #yes:hover {
+            transform: scale(1.08);
+        }
+
+        /* NO */
+
+        #no {
+            width: 280px;
+            height: 105px;
+
+            font-size: 40px;
+
+            background: #e5e7eb;
+
+            color: #aeb3ba;
+
+            cursor: pointer;
+
+            position: relative;
+        }
+
+        .message {
+            margin-top: 35px;
+
+            font-size: 25px;
+
+            color: #333;
+
+            font-family: cursive;
+        }
+
+        /* POWERED BY */
+
+        .powered {
+            position: fixed;
+
+            bottom: 15px;
+
+            right: 20px;
+
+            font-size: 14px;
+
+            color: #888;
+
+            font-family: Arial, sans-serif;
+
+            z-index: 50;
+        }
+
+        /* POPUP */
+
+        .popup {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.4);
+
+            justify-content: center;
+
+            align-items: center;
+
+            z-index: 20;
+        }
+
+        .popup-box {
+            background: white;
+
+            padding: 40px;
+
+            border-radius: 25px;
+
+            text-align: center;
+
+            box-shadow:
+                0 15px 50px
+                rgba(0, 0, 0, 0.25);
+
+            animation: popup 0.35s ease;
+        }
+
+        .popup-box h2 {
+            font-size: 34px;
+
+            margin-bottom: 25px;
+        }
+
+        .popup-box button {
+            width: 110px;
+
+            height: 55px;
+
+            font-size: 20px;
+
+            background: #2196f3;
+
+            color: white;
+
+            cursor: pointer;
+        }
+
+        /* FLOATING HEARTS */
+
+        .floating-heart {
+            position: fixed;
+
+            bottom: -50px;
+
+            pointer-events: none;
+
+            z-index: 1;
+
+            animation: floatUp linear forwards;
+        }
+
+        @keyframes heartbeat {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.16);
+            }
+
+        }
+
+        @keyframes popup {
+
+            from {
+                transform: scale(0.6);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+        }
+
+        @keyframes floatUp {
+
+            from {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 1;
+            }
+
+            to {
+                transform:
+                    translateY(-110vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .buttons {
+                gap: 15px;
+            }
+
+            #yes,
+            #no {
+                width: 145px;
+
+                height: 75px;
+
+                font-size: 28px;
+            }
+
+            .heart {
+                font-size: 70px;
+            }
+
+            .message {
+                font-size: 20px;
+            }
+
+            .powered {
+                font-size: 12px;
+
+                bottom: 10px;
+
+                right: 12px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="container">
+
+
+        <div class="heart">
+            ❤️
+        </div>
+
+
+        <h1>
+            Do u love Me?
+        </h1>
+
+
+        <div class="buttons">
+
+
+            <button
+                id="yes"
+                onclick="sayYes()">
+
+                Yes 💕
+                
+            </button>
+
+
+            <button
+                id="no">
+
+                No 😏
+
+            </button>
+
+
+        </div>
+
+
+        <div class="message">
+
+            Try clicking No... 😈❤️
+
+        </div>
+
+
+    </div>
+
+
+    <!-- POWERED BY -->
+
+    <div class="powered">
+        Powered By Esa Atta
+    </div>
+
+
+    <!-- POPUP -->
+
+    <div
+        class="popup"
+        id="popup">
+
+
+        <div class="popup-box">
+
+
+            <h2>
+                ❤️ I love you too!
+            </h2>
+
+
+            <button
+                onclick="closePopup()">
+
+                OK
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+
+        const noButton =
+            document.getElementById("no");
+
+
+        /* NO BUTTON RUNS AWAY */
+
+        function moveNoButton() {
+
+            const maxX =
+                window.innerWidth
+                - noButton.offsetWidth
+                - 20;
+
+            const maxY =
+                window.innerHeight
+                - noButton.offsetHeight
+                - 20;
+
+            const x =
+                Math.random() * maxX;
+
+            const y =
+                Math.random() * maxY;
+
+            noButton.style.position =
+                "fixed";
+
+            noButton.style.left =
+                x + "px";
+
+            noButton.style.top =
+                y + "px";
+
+        }
+
+
+        /* DESKTOP */
+
+        noButton.addEventListener(
+            "mouseenter",
+            moveNoButton
+        );
+
+
+        /* MOBILE */
+
+        noButton.addEventListener(
+            "touchstart",
+            function(event) {
+
+                event.preventDefault();
+
+                moveNoButton();
+
+            }
+        );
+
+
+        /* YES */
+
+        function sayYes() {
+
+            document
+                .getElementById("popup")
+                .style.display = "flex";
+
+
+            for (
+                let i = 0;
+                i < 40;
+                i++
+            ) {
+
+                setTimeout(
+                    createHeart,
+                    i * 35
+                );
+
+            }
+
+        }
+
+
+        /* CLOSE */
+
+        function closePopup() {
+
+            document
+                .getElementById("popup")
+                .style.display = "none";
+
+        }
+
+
+        /* CREATE HEART */
+
+        function createHeart() {
+
+            const heart =
+                document.createElement("div");
+
+            heart.className =
+                "floating-heart";
+
+            const heartTypes = [
+
+                "❤️",
+                "💕",
+                "💖",
+                "💗",
+                "💘",
+                "💝"
+
+            ];
+
+            heart.textContent =
+                heartTypes[
+                    Math.floor(
+                        Math.random()
+                        * heartTypes.length
+                    )
+                ];
+
+            heart.style.left =
+                Math.random()
+                * 100
+                + "vw";
+
+            heart.style.fontSize =
+                (18 + Math.random() * 30)
+                + "px";
+
+            heart.style.animationDuration =
+                (3 + Math.random() * 4)
+                + "s";
+
+            document.body.appendChild(
+                heart
+            );
+
+            setTimeout(
+                () => heart.remove(),
+                7000
+            );
+
+        }
+
+
+        /* CONTINUOUS HEARTS */
+
+        setInterval(
+            createHeart,
+            800
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
+```
